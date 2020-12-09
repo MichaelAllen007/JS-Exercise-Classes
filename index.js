@@ -75,8 +75,27 @@ class Airplane {
   */
   
  class Car {
-    
+  constructor (model, milesPerGallon) {
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
   }
+  fill (gallons) {
+    return this.tank = this.tank + gallons;
+  }
+  drive (distance) {
+    let mpg = this.tank * this.milesPerGallon;
+    if (mpg > distance) {
+      this.odometer = this.odometer + distance;
+      this.tank = distance / this.milesPerGallon;
+    } else {
+      this.tank = 0;
+      this.odometer = mpg;
+      return `I ran out of gas at ${this.odometer} miles!`;
+    }
+  }
+}
   
   /*
     TASK 3
